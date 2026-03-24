@@ -56,7 +56,7 @@ export function StartScreen({ onStart }: StartScreenProps) {
       <div className="text-center mb-8 animate-bounce-in">
         <div className="text-7xl mb-3">🧮</div>
         <h1 className="text-4xl sm:text-5xl font-bold text-white drop-shadow-lg mb-2">
-          Math Practice
+          Bam's Math Practice
         </h1>
         <p className="text-xl sm:text-2xl text-white/90 font-medium">
           Pick a topic to start!
@@ -89,7 +89,7 @@ export function StartScreen({ onStart }: StartScreenProps) {
       </div>
 
       <p className="mt-8 text-white/80 text-base sm:text-lg font-medium">
-        10 questions per round
+        10 questions per round. Focus, my Bamboozle!
       </p>
     </div>
   );
