@@ -5,6 +5,7 @@ interface NumberPadProps {
   onNext?: () => void;
   phase: 'playing' | 'feedback';
   hasInput: boolean;
+  hideActionButton?: boolean;
 }
 
 const DIGIT_ROWS = [
@@ -14,7 +15,7 @@ const DIGIT_ROWS = [
   ['0'],
 ];
 
-export function NumberPad({ onDigit, onDelete, onCheck, onNext, phase, hasInput }: NumberPadProps) {
+export function NumberPad({ onDigit, onDelete, onCheck, onNext, phase, hasInput, hideActionButton = false }: NumberPadProps) {
   const isPlaying = phase === 'playing';
 
   return (
@@ -73,46 +74,48 @@ export function NumberPad({ onDigit, onDelete, onCheck, onNext, phase, hasInput 
         ))}
 
         {/* Action button: Check or Next */}
-        <div className="pt-1">
-          {isPlaying ? (
-            <button
-              onClick={onCheck}
-              disabled={!hasInput}
-              className={`
-                w-full h-16 sm:h-20
-                rounded-2xl
-                text-2xl sm:text-3xl font-extrabold text-white
-                shadow-md border-b-4
-                transition-transform duration-75
-                active:translate-y-1 active:border-b-0
-                touch-manipulation
-                ${hasInput
-                  ? 'bg-green-500 border-green-700 hover:bg-green-600 active:bg-green-700'
-                  : 'bg-green-300 border-green-400 cursor-not-allowed opacity-60'
-                }
-              `}
-            >
-              ✅ Check
-            </button>
-          ) : (
-            <button
-              onClick={onNext}
-              className="
-                w-full h-16 sm:h-20
-                rounded-2xl
-                text-2xl sm:text-3xl font-extrabold text-white
-                bg-indigo-500 border-b-4 border-indigo-700
-                hover:bg-indigo-600 active:bg-indigo-700
-                shadow-md
-                transition-transform duration-75
-                active:translate-y-1 active:border-b-0
-                touch-manipulation
-              "
-            >
-              Next →
-            </button>
-          )}
-        </div>
+        {!hideActionButton && (
+          <div className="pt-1">
+            {isPlaying ? (
+              <button
+                onClick={onCheck}
+                disabled={!hasInput}
+                className={`
+                  w-full h-16 sm:h-20
+                  rounded-2xl
+                  text-2xl sm:text-3xl font-extrabold text-white
+                  shadow-md border-b-4
+                  transition-transform duration-75
+                  active:translate-y-1 active:border-b-0
+                  touch-manipulation
+                  ${hasInput
+                    ? 'bg-green-500 border-green-700 hover:bg-green-600 active:bg-green-700'
+                    : 'bg-green-300 border-green-400 cursor-not-allowed opacity-60'
+                  }
+                `}
+              >
+                ✅ Check
+              </button>
+            ) : (
+              <button
+                onClick={onNext}
+                className="
+                  w-full h-16 sm:h-20
+                  rounded-2xl
+                  text-2xl sm:text-3xl font-extrabold text-white
+                  bg-indigo-500 border-b-4 border-indigo-700
+                  hover:bg-indigo-600 active:bg-indigo-700
+                  shadow-md
+                  transition-transform duration-75
+                  active:translate-y-1 active:border-b-0
+                  touch-manipulation
+                "
+              >
+                Next →
+              </button>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
