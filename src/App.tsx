@@ -44,7 +44,7 @@ function App() {
       return (
         <MultiplicationTable
           multiplier={timesTableNumber}
-          onHome={() => setAppScreen('main')}
+          onHome={() => setAppScreen('multiplication-menu')}
         />
       );
     }
@@ -96,7 +96,7 @@ function App() {
         score={score}
         onHome={() => {
           resetGame();
-          setAppScreen('main');
+          setAppScreen(selectedOperation === 'multiplication' ? 'multiplication-menu' : 'main');
         }}
       />
 
